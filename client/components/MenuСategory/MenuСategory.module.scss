@@ -1,0 +1,35 @@
+.categories_list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.category {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+  transition: 0.2s;
+  flex: 1;
+
+  &:hover {
+    color: #edf4ff;
+  }
+
+  &:hover + .category_name {
+    color: #2979ff;
+  }
+
+  & + & {
+    margin-left: 20px;
+  }
+
+  &_name {
+    font-size: 14px;
+    text-transform: capitalize;
+    margin-top: 5px;
+  }
+}
