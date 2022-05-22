@@ -2,7 +2,7 @@ import React from 'react'
 import type { NextPage } from 'next'
 import MainContainer from '../components/MainContainer/MainContainer'
 import { MenuСategory } from '../components/MenuСategory/MenuСategory'
-import { categoriesList } from '../models/categoriesList'
+import { categoriesList } from '../models/categoriesList.models'
 import { SideFilter } from '../components/SideFilter/SideFilter'
 
 const Home: NextPage = () => {
