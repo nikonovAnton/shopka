@@ -8,7 +8,7 @@ import {
   RestarauntIcon,
   ObservationIcon,
   BarleyIcon,
-} from '../components/Icons/'
+} from '../components/Icons'
 import { CategoriesListProps } from '../components/MenuСategory/MenuСategory'
 
 export const categoriesList: CategoriesListProps[] = [
