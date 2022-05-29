@@ -1,18 +1,7 @@
 import React, { FC, useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { IconProps } from '../Icons/Interface'
-
-import styles from './MenuСategory.module.scss'
-
-export interface CategoriesListProps {
-  name: string
-  search: string
-  icon: (color: string) => JSX.Element
-}
-
-interface MenuСategoryProps {
-  categoriesList: CategoriesListProps[]
-}
+import styles from './menu-category.module.scss'
+import { MenuСategoryProps } from './menu-category.interface'
 
 export const MenuСategory: FC<MenuСategoryProps> = ({ categoriesList }) => {
   const router = useRouter()

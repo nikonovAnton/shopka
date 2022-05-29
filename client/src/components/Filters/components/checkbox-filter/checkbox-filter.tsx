@@ -1,15 +1,10 @@
-import React, { FC, useState, MouseEvent, useRef } from 'react'
-import { ArrowIcon } from '../../../Icons'
+import React, { FC, useState, MouseEvent } from 'react'
+import styles from './checkbox-filter.module.scss'
+import { ArrowIcon } from '../../../icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
-
-import styles from './CheckboxFilter.module.scss'
+import { CheckboxFilterProps } from './checkbox-filter.interface'
 import classNames from 'classnames'
-
-interface CheckboxFilterProps {
-  title: string
-  checkboxNames: string[]
-}
 
 export const CheckboxFilter: FC<CheckboxFilterProps> = ({
   title,
@@ -18,18 +13,17 @@ export const CheckboxFilter: FC<CheckboxFilterProps> = ({
   const [isFilterOpen, setIsFilterOpen] = useState(true)
   const [activeСheckboxes, setActiveСheckboxes] = useState<string[]>([])
 
-  const filterHandler = () => {
+  const openFilterHandler = () => {
     setIsFilterOpen(!isFilterOpen)
   }
 
-  const someHandler = (event: MouseEvent<HTMLElement>) => {
+  const onChangeHandler = (event: MouseEvent<HTMLElement>) => {
     const target = event.target as HTMLElement
-    const element = target.closest(`.${styles.checkbox_container}`)
-    const elementId = element?.id.replace('Checkbox', '') || ''
+    const element = target.closest(`li`)
+    const elementId = element?.id || ''
 
     if (!activeСheckboxes.includes(elementId)) {
-      setActiveСheckboxes((prev) => [...prev, elementId])
-      return
+      return setActiveСheckboxes((prev) => [...prev, elementId])
     }
 
     setActiveСheckboxes((prev) =>
@@ -37,9 +31,16 @@ export const CheckboxFilter: FC<CheckboxFilterProps> = ({
     )
   }
 
+  const getCheckboxContainerClassName = (checkboxName: string) => {
+    return classNames(
+      styles.checkbox_input_container,
+      activeСheckboxes.includes(checkboxName) ? styles.active : null,
+    )
+  }
+
   return (
     <div className={styles.filter}>
-      <div className={styles.header} onClick={filterHandler}>
+      <div className={styles.header} onClick={openFilterHandler}>
         <h3>{title}</h3>
 
         <span
@@ -51,24 +52,14 @@ export const CheckboxFilter: FC<CheckboxFilterProps> = ({
       </div>
 
       {isFilterOpen && (
-        <div
-          onClick={(event) => someHandler(event)}
-          className={styles.checkbox_list}
-        >
+        <ul onClick={onChangeHandler} className={styles.checkbox_list}>
           {checkboxNames.map((checkboxName) => (
-            <div
+            <li
               className={styles.checkbox_container}
-              id={`${checkboxName}Checkbox`}
+              id={checkboxName}
               key={checkboxName}
             >
-              <div
-                className={classNames(
-                  styles.checkbox_input_container,
-                  activeСheckboxes.includes(checkboxName)
-                    ? styles.active
-                    : null,
-                )}
-              >
+              <div className={getCheckboxContainerClassName(checkboxName)}>
                 <input type="checkbox" />
                 <label htmlFor="checkbox">
                   <FontAwesomeIcon
@@ -82,9 +73,9 @@ export const CheckboxFilter: FC<CheckboxFilterProps> = ({
               </div>
 
               <span>{checkboxName}</span>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       )}
     </div>
   )

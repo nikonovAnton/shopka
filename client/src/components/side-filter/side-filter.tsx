@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { Button } from '../Button/Button'
-import { CheckboxFilter } from '../Filters'
-import { FilterIcon } from '../Icons'
-
-import styles from './SideFilter.module.scss'
+import styles from './side-filter.module.scss'
+import { Button } from '../button/button'
+import { CheckboxFilter } from '../filters'
+import { FilterIcon } from '../icons'
+import { checkboxFilters } from '../../models/side-filter.model'
 
 export const SideFilter = () => {
   const [isFiltersOpen, setIsFiltersOpen] = useState(false)
@@ -27,14 +27,12 @@ export const SideFilter = () => {
 
       {isFiltersOpen && (
         <>
-          <CheckboxFilter
-            title="Collapsed filters"
-            checkboxNames={['Recommended', 'Recently Added', 'Expiring Soon']}
-          />
-          <CheckboxFilter
-            title="Expanded Filters"
-            checkboxNames={['Recommended', 'Recently Added', 'Expiring Soon']}
-          />
+          {checkboxFilters.map((checkboxFilter) => (
+            <CheckboxFilter
+              title={checkboxFilter.title}
+              checkboxNames={checkboxFilter.checkboxNames}
+            />
+          ))}
         </>
       )}
     </div>

@@ -1,10 +1,9 @@
+import styles from './header-nav.module.scss'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Input } from '../Input/Input'
-
-import styles from './HeaderNav.module.scss'
-import { Button } from '../Button/Button'
-import { Avatar } from '../Avatar/Avatar'
+import { SearchInput } from '../input'
+import { Button } from '../button/button'
+import { Avatar } from '../avatar/avatar'
 
 const HeaderNav = () => {
   return (
@@ -24,7 +23,7 @@ const HeaderNav = () => {
 
         <button className={styles.link}>Register</button>
 
-        <Input type="search" className={styles.input} />
+        <SearchInput className={styles.input} />
 
         <div className={styles.button_container}>
           <Button containerClassName={styles.button}>Sign in</Button>

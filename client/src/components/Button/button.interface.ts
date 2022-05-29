@@ -1,4 +1,7 @@
-type ButtonTypeProps = 'outline' | 'filled'
+export enum ButtonType {
+  Outline = 'outline',
+  Filled = 'filled',
+}
 
 interface MarkProps {
   text: string | number
@@ -6,7 +9,7 @@ interface MarkProps {
 }
 
 export interface ButtonProps {
-  type?: ButtonTypeProps
+  type?: ButtonType
   onClick?: () => void
   className?: string
   containerClassName?: string

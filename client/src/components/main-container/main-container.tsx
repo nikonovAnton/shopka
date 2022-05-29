@@ -1,9 +1,8 @@
 import React, { FC } from 'react'
+import style from './main-container.module.scss'
 import Head from 'next/head'
-import HeaderNav from '../HeaderNav/HeaderNav'
-
+import HeaderNav from '../header-nav/header-nav'
 import '@fortawesome/fontawesome-svg-core/styles.css'
-import style from './MainContainer.module.scss'
 
 const MainContainer: FC = ({ children }) => {
   return (

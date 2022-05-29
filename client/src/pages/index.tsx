@@ -1,9 +1,9 @@
 import React from 'react'
 import type { NextPage } from 'next'
-import MainContainer from '../components/MainContainer/MainContainer'
-import { MenuСategory } from '../components/MenuСategory/MenuСategory'
-import { categoriesList } from '../models/categoriesList.models'
-import { SideFilter } from '../components/SideFilter/SideFilter'
+import MainContainer from '../components/main-container/main-container'
+import { MenuСategory } from '../components/menu-category/menu-category'
+import { categoriesList } from '../models/categories-list.model'
+import { SideFilter } from '../components/side-filter/side-filter'
 import { Provider } from 'react-redux'
 import { store } from '../redux/store'
 

@@ -1,24 +1,23 @@
-import classNames from 'classnames'
 import React, { FC } from 'react'
-import style from './Button.module.scss'
-import { ButtonProps } from './interface'
+import style from './button.module.scss'
+import classNames from 'classnames'
+import { ButtonProps, ButtonType } from './button.interface'
 
 export const Button: FC<ButtonProps> = ({
   children,
   onClick,
   disabled,
-  type = 'outline',
+  type = ButtonType.Outline,
   className,
   containerClassName,
   mark,
 }) => {
+  const buttonClassName = classNames(style.button, style[`button_${type}`], {
+    className,
+  })
   return (
-    <div className={classNames(style.button_container, containerClassName)}>
-      <button
-        className={classNames(style.button, style[`button_${type}`], className)}
-        onClick={onClick}
-        disabled={disabled}
-      >
+    <div className={classNames(style.button_container, { containerClassName })}>
+      <button className={buttonClassName} onClick={onClick} disabled={disabled}>
         {children}
       </button>
 
